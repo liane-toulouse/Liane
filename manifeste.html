@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manifeste — LIANE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,600&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #161610; --moss: #2a5022; --leaf: #4a7e3a; --sage: #8fb87a;
+  --paper: #f2ede4; --cream: #faf7f2;
+  --serif: 'Fraunces', Georgia, serif; --sans: 'Instrument Sans', system-ui, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--ink); font-family: var(--sans); }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 99;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 2.5rem;
+  background: rgba(250,247,242,0.95); backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(42,80,34,0.1);
+}
+.logo { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; letter-spacing: .06em; color: var(--moss); text-decoration: none; }
+.nav-back { font-size: .78rem; color: rgba(22,22,16,.5); text-decoration: none; letter-spacing: .06em; transition: color .2s; }
+.nav-back:hover { color: var(--moss); }
+
+/* HEADER */
+.doc-header {
+  background: var(--moss);
+  padding: 8rem 2.5rem 5rem;
+  text-align: center;
+}
+.doc-eyebrow { font-size: .7rem; letter-spacing: .22em; text-transform: uppercase; color: var(--sage); margin-bottom: 1.5rem; }
+.doc-title { font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 300; color: var(--cream); line-height: 1.1; margin-bottom: 1rem; }
+.doc-subtitle { font-family: var(--serif); font-size: 1.1rem; font-style: italic; color: var(--sage); }
+
+/* BODY */
+.doc-body { max-width: 720px; margin: 0 auto; padding: 5rem 2rem 8rem; }
+
+.doc-section { margin-bottom: 4rem; }
+
+.section-num {
+  font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--leaf); margin-bottom: .75rem; font-weight: 500;
+}
+
+h2 {
+  font-family: var(--serif); font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300; color: var(--moss); margin-bottom: 1.5rem;
+  line-height: 1.2; letter-spacing: -.01em;
+}
+
+p { font-size: 1rem; line-height: 1.85; color: rgba(22,22,16,.8); margin-bottom: 1.2rem; }
+p:last-child { margin-bottom: 0; }
+
+.quote {
+  font-family: var(--serif); font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-style: italic; font-weight: 300; color: var(--moss);
+  border-left: 3px solid var(--sage); padding-left: 1.5rem;
+  margin: 2.5rem 0; line-height: 1.5;
+}
+
+ul { list-style: none; margin-bottom: 1.2rem; }
+ul li { padding: .5rem 0 .5rem 1.5rem; position: relative; font-size: 1rem; line-height: 1.75; color: rgba(22,22,16,.8); border-bottom: 1px solid rgba(42,80,34,.06); }
+ul li:last-child { border-bottom: none; }
+ul li::before { content: '—'; position: absolute; left: 0; color: var(--sage); }
+
+.call {
+  font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 300; font-style: italic; color: var(--ink);
+  line-height: 1.7; margin-bottom: 2rem;
+}
+
+.call strong { color: var(--moss); font-style: normal; }
+
+.signature {
+  margin-top: 4rem; padding-top: 2rem;
+  border-top: 1px solid rgba(42,80,34,.15);
+  font-size: .82rem; color: rgba(22,22,16,.4);
+  line-height: 1.7;
+}
+
+.doc-divider { border: none; border-top: 1px solid rgba(42,80,34,.1); margin: 3rem 0; }
+
+footer { background: var(--ink); padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.f-logo { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: rgba(250,247,242,.5); letter-spacing: .06em; }
+.f-links { display: flex; gap: 1.5rem; list-style: none; }
+.f-links a { font-size: .72rem; color: rgba(250,247,242,.25); text-decoration: none; transition: color .2s; }
+.f-links a:hover { color: rgba(250,247,242,.6); }
+.f-tag { font-size: .7rem; color: rgba(250,247,242,.18); }
+
+@media (max-width: 680px) {
+  nav { padding: .9rem 1.2rem; }
+  .doc-header { padding: 6rem 1.5rem 3.5rem; }
+  .doc-body { padding: 3rem 1.2rem 6rem; }
+  footer { flex-direction: column; align-items: flex-start; padding: 1.5rem 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">LIANE</a>
+  <a href="index.html" class="nav-back">← Retour</a>
+</nav>
+
+<header class="doc-header">
+  <p class="doc-eyebrow">Document fondateur · Occitanie · 2026</p>
+  <h1 class="doc-title">Manifeste</h1>
+  <p class="doc-subtitle">Réseau social et végétal pour une ville vivante et comestible</p>
+</header>
+
+<div class="doc-body">
+
+  <div class="doc-section">
+    <p class="section-num">I.</p>
+    <h2>Ce que nous avons oublié</h2>
+    <p>Il y a quelque chose que les villes ont effacé sans le dire. Pas seulement les arbres, pas seulement la terre — mais le lien. Ce fil invisible qui reliait chaque humain au cycle du vivant, à la saison qui tourne, à la plante qui pousse dans un interstice de béton, à la main d'un voisin tendue pour partager un sac de graine.</p>
+    <p>Nous avons construit des murs, des routes, des écrans. Nous avons gagné en vitesse ce que nous avons perdu en présence. Et quelque part entre deux notifications et une réunion en visioconférence, nous avons oublié que nous sommes des organismes vivants, interdépendants, enracinés — même quand le sol est recouvert d'asphalte.</p>
+    <div class="quote">"La ville n'est pas l'ennemi du vivant ; elle est un terrain à réensemencer."</div>
+  </div>
+
+  <hr class="doc-divider">
+
+  <div class="doc-section">
+    <p class="section-num">II.</p>
+    <h2>Ce que LIANE veut faire pousser</h2>
+    <p>LIANE est née d'un constat simple : il existe, dans chaque quartier, des gens qui veulent agir. Des jardiniers du dimanche et des éco-activistes du lundi. Des curieux de botanique et des cuisiniers du vivant. Des enseignants qui cherchent un sol pour apprendre dehors. Des enfants qui n'ont jamais touché une feuille de menthe fraîche.</p>
+    <p><strong>Des gens s'ignorent. Des gestes se perdent. Des initiatives meurent faute de réseau.</strong></p>
+    <p>LIANE est l'infrastructure de ce qui manquait : une plateforme pour que ces humains se trouvent, que leurs actions s'additionnent, que la végétation urbaine devienne un projet collectif — visible, partagé, vivant.</p>
+  </div>
+
+  <hr class="doc-divider">
+
+  <div class="doc-section">
+    <p class="section-num">III.</p>
+    <h2>Mes trois racines</h2>
+    <ul>
+      <li><strong>Ontologique.</strong> Retisser des liens poétiques et sensibles entre humains et monde vivant. Avant d'être un outil, LIANE est une invitation à regarder différemment — la friche, le platane, l'ortie qui perce le trottoir.</li>
+      <li><strong>Pédagogique.</strong> Transmettre et recevoir des savoirs botaniques, culinaires, médicinaux, ancestraux. Chaque plante est une histoire. Chaque échange est une école.</li>
+      <li><strong>Physique.</strong> Transformer concrètement la ville. Végétaliser, planter, partager, chantier après chantier, mains dans la terre.</li>
+    </ul>
+  </div>
+
+  <hr class="doc-divider">
+
+  <div class="doc-section">
+    <p class="section-num">IV.</p>
+    <h2>Ce que je crois</h2>
+    <p>Je crois que la transition écologique ne se décrète pas d'en haut. Elle se sème d'en bas — par des gestes minuscules et obstinés, par des communautés qui se choisissent, par des espaces où la connaissance circule librement.</p>
+    <p>Je crois qu'une application peut être profonde sans être addictive. Qu'un réseau social peut pousser les gens vers la vraie vie plutôt qu'à l'écart. Que la technologie, quand elle sait rester discrète, peut servir le vivant.</p>
+    <p>Je crois que le lien social et le lien végétal ne sont pas si différents : l'un et l'autre ont besoin de temps, d'attention, d'humidité, et d'un peu d'ombre pour ne pas brûler trop vite.</p>
+  </div>
+
+  <hr class="doc-divider">
+
+  <div class="doc-section">
+    <p class="section-num">V.</p>
+    <h2>Ce que je ne ferai pas</h2>
+    <ul>
+      <li>Je ne vendrai pas vos données à qui que ce soit.</li>
+      <li>Je ne concevrai pas une interface conçue pour vous garder captifs.</li>
+      <li>Je ne prétendrai pas que cliquer est agir.</li>
+      <li>Je ne greenwasherai pas. Ni ma plateforme, ni mes partenaires.</li>
+      <li>Je ne créerai pas de communauté fermée sur elle-même : LIANE est un pont, pas un mur.</li>
+    </ul>
+  </div>
+
+  <hr class="doc-divider">
+
+  <div class="doc-section">
+    <p class="section-num">VI.</p>
+    <h2>Mon engagement</h2>
+    <ul>
+      <li>Construire une plateforme qui grandit lentement, avec soin — comme pousse un arbre, pas comme monte un cours de bourse.</li>
+      <li>Maintenir une gouvernance transparente, une économie éthique, un modèle qui ne dépend pas de l'exploitation de ses utilisateurs.</li>
+      <li>Rester à l'écoute du terrain : des testeurs, des jardiniers, des botanistes, des habitants — ceux qui savent parce qu'ils font.</li>
+      <li>Accepter d'être imparfait, de recommencer, de tâtonner. L'humus naît de la décomposition. LIANE aussi peut nourrir ce qui vient après.</li>
+    </ul>
+  </div>
+
+  <hr class="doc-divider">
+
+  <div class="doc-section">
+    <p class="call">
+      Alors, si toi aussi tu regardes cette ville et tu vois un jardin possible —<br>
+      si toi aussi tu penses que la connaissance d'une plante mérite d'être partagée —<br>
+      si toi aussi tu veux que ton quartier sente la menthe et le romarin<br>
+      plutôt que le gasoil et l'asphalte chaud —<br><br>
+      <strong>rejoins la liane.</strong>
+    </p>
+  </div>
+
+  <div class="signature">
+    <p>Le « je » de ce document est celui d'une seule personne, pour l'instant : étudiant en écologie humaine, avec de l'expérience en agriculture urbaine et dans la conduite de projets sociaux.</p>
+    <p style="margin-top:.75rem;">Occitanie · Avril 2026 · #LianeToulouse</p>
+  </div>
+
+</div>
+
+<footer>
+  <span class="f-logo">LIANE</span>
+  <ul class="f-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="charte.html">Charte éthique</a></li>
+    <li><a href="mailto:lianeoccitanie@gmail.com">Contact</a></li>
+  </ul>
+  <span class="f-tag">#LianeToulouse · 2026</span>
+</footer>
+
+</body>
+</html>

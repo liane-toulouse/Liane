@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charte éthique — LIANE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,600&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #161610; --moss: #2a5022; --leaf: #4a7e3a; --sage: #8fb87a;
+  --paper: #f2ede4; --cream: #faf7f2;
+  --serif: 'Fraunces', Georgia, serif; --sans: 'Instrument Sans', system-ui, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--ink); font-family: var(--sans); }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 99;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 2.5rem;
+  background: rgba(250,247,242,0.95); backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(42,80,34,0.1);
+}
+.logo { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; letter-spacing: .06em; color: var(--moss); text-decoration: none; }
+.nav-back { font-size: .78rem; color: rgba(22,22,16,.5); text-decoration: none; letter-spacing: .06em; transition: color .2s; }
+.nav-back:hover { color: var(--moss); }
+
+.doc-header {
+  background: var(--paper);
+  border-bottom: 1px solid rgba(42,80,34,.1);
+  padding: 8rem 2.5rem 5rem;
+  text-align: center;
+}
+.doc-eyebrow { font-size: .7rem; letter-spacing: .22em; text-transform: uppercase; color: var(--leaf); margin-bottom: 1.5rem; }
+.doc-title { font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 300; color: var(--moss); line-height: 1.1; margin-bottom: 1rem; }
+.doc-subtitle { font-size: .9rem; color: rgba(22,22,16,.45); max-width: 52ch; margin: 0 auto; line-height: 1.7; }
+
+.doc-intro {
+  background: var(--moss); color: var(--cream);
+  padding: 2.5rem; text-align: center;
+}
+.doc-intro p { font-family: var(--serif); font-size: 1rem; font-style: italic; font-weight: 300; color: rgba(250,247,242,.8); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+.doc-body { max-width: 720px; margin: 0 auto; padding: 5rem 2rem 8rem; }
+
+.doc-section { margin-bottom: 4rem; }
+
+.section-num { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--leaf); margin-bottom: .75rem; font-weight: 500; }
+
+h2 { font-family: var(--serif); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 300; color: var(--moss); margin-bottom: 1.5rem; line-height: 1.2; }
+
+p { font-size: 1rem; line-height: 1.85; color: rgba(22,22,16,.8); margin-bottom: 1.2rem; }
+p:last-child { margin-bottom: 0; }
+
+ul { list-style: none; margin-bottom: 1.2rem; }
+ul li { padding: .6rem 0 .6rem 1.5rem; position: relative; font-size: .95rem; line-height: 1.75; color: rgba(22,22,16,.75); border-bottom: 1px solid rgba(42,80,34,.06); }
+ul li:last-child { border-bottom: none; }
+ul li::before { content: '—'; position: absolute; left: 0; color: var(--sage); }
+
+.doc-divider { border: none; border-top: 1px solid rgba(42,80,34,.1); margin: 3rem 0; }
+
+.doc-closing {
+  background: var(--paper); border: 1px solid rgba(42,80,34,.12);
+  border-radius: .3rem; padding: 2rem 2.5rem; margin-top: 3rem;
+}
+.doc-closing p { font-family: var(--serif); font-style: italic; color: var(--moss); font-size: 1rem; line-height: 1.7; }
+.doc-closing .closing-meta { font-family: var(--sans); font-style: normal; font-size: .78rem; color: rgba(22,22,16,.35); margin-top: 1rem; }
+
+footer { background: var(--ink); padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.f-logo { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: rgba(250,247,242,.5); letter-spacing: .06em; }
+.f-links { display: flex; gap: 1.5rem; list-style: none; }
+.f-links a { font-size: .72rem; color: rgba(250,247,242,.25); text-decoration: none; transition: color .2s; }
+.f-links a:hover { color: rgba(250,247,242,.6); }
+.f-tag { font-size: .7rem; color: rgba(250,247,242,.18); }
+
+@media (max-width: 680px) {
+  nav { padding: .9rem 1.2rem; }
+  .doc-header { padding: 6rem 1.5rem 3.5rem; }
+  .doc-body { padding: 3rem 1.2rem 6rem; }
+  footer { flex-direction: column; align-items: flex-start; padding: 1.5rem 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">LIANE</a>
+  <a href="index.html" class="nav-back">← Retour</a>
+</nav>
+
+<header class="doc-header">
+  <p class="doc-eyebrow">Document fondateur · Version 1.0 · Avril 2026</p>
+  <h1 class="doc-title">Charte éthique</h1>
+  <p class="doc-subtitle">Ce document définit les valeurs qui guident chaque décision de LIANE — technique, communautaire, économique ou esthétique. Ce n'est pas un règlement. C'est une boussole.</p>
+</header>
+
+<div class="doc-intro">
+  <p>Il est destiné à l'équipe fondatrice, aux partenaires et à toute personne qui rejoint le projet. Il peut évoluer : LIANE est un organisme vivant.</p>
+</div>
+
+<div class="doc-body">
+
+  <div class="doc-section">
+    <p class="section-num">1.</p>
+    <h2>Sobriété numérique</h2>
+    <p>Une application peut être utile sans être vorace — en données, en attention, en énergie. Avant d'ajouter une fonction, LIANE se pose une question : est-ce que ça pousse vers la vraie vie, ou est-ce que ça en éloigne ?</p>
+    <ul>
+      <li>Aucun piège à attention : pas de défilement sans fin, pas de notifications qui harcèlent, pas d'interface qui manipule.</li>
+      <li>Les fonctions sont ajoutées lentement, une fois leur utilité vérifiée.</li>
+      <li>L'appli est faite pour être refermée vite — et rouverte quand on en a besoin.</li>
+    </ul>
+  </div>
+
+  <hr class="doc-divider">
+
+  <div class="doc-section">
+    <p class="section-num">2.</p>
+    <h2>Respect absolu des données personnelles</h2>
+    <p>Les données personnelles ne sont pas une marchandise. Elles sont confiées à LIANE, pas à vendre. LIANE respecte le RGPD — et va un peu plus loin.</p>
+    <ul>
+      <li>Aucune donnée personnelle n'est vendue ni cédée à des tiers pour du commerce.</li>
+      <li>L'utilisateur garde le contrôle de sa localisation, à tout moment.</li>
+      <li>Un compte, et toutes ses données, peuvent être supprimés à tout moment, sans délai.</li>
+      <li>La publicité tient seulement au sujet de la page — le vivant, le jardin, l'alimentation. Jamais à la personne qui la regarde : aucun suivi, aucun profil.</li>
+    </ul>
+  </div>
+
+  <hr class="doc-divider">
+
+  <div class="doc-section">
+    <p class="section-num">3.</p>
+    <h2>Économie éthique</h2>
+    <p>LIANE doit vivre — mais pas à n'importe quel prix. Sa façon de gagner de l'argent ne doit jamais trahir sa mission. La croissance est un moyen, pas un but.</p>
+    <ul>
+      <li>Côté publicité, seules les enseignes liées au vivant, au social et à l'alimentation responsable sont acceptées.</li>
+      <li>L'offre Premium reste toujours facultative. Aucune fonction essentielle n'est enfermée derrière un paiement.</li>
+      <li>Chaque partenariat passe par une relecture éthique avant d'être signé.</li>
+      <li>Les comptes sont publiés chaque année, en clair.</li>
+    </ul>
+  </div>
+
+  <hr class="doc-divider">
+
+  <div class="doc-section">
+    <p class="section-num">4.</p>
+    <h2>Gouvernance participative</h2>
+    <p>LIANE appartient à sa communauté autant qu'à ses fondateurs. Les décisions qui touchent la plateforme sont discutées avec les utilisateurs actifs.</p>
+    <ul>
+      <li>Un conseil communautaire est créé dès 100 utilisateurs actifs.</li>
+      <li>Les bêta-testeurs ont leur mot à dire sur les grands changements.</li>
+      <li>Une structure coopérative est envisagée plus tard.</li>
+      <li>Toute décision contraire à cette charte peut être contestée publiquement.</li>
+    </ul>
+  </div>
+
+  <hr class="doc-divider">
+
+  <div class="doc-section">
+    <p class="section-num">5.</p>
+    <h2>Inclusion & accessibilité</h2>
+    <p>LIANE est un pont entre des mondes qui ne se parlent pas toujours. Elle veut relier les générations, les milieux sociaux et les niveaux de connaissance.</p>
+    <ul>
+      <li>L'application suit les standards d'accessibilité reconnus (WCAG 2.1 niveau AA), pour rester utilisable par tous.</li>
+      <li>Le vocabulaire reste simple, sans jargon technique ni botanique.</li>
+      <li>LIANE ne favorise aucun groupe social, ethnique, religieux ou politique.</li>
+      <li>Quand un contenu est modéré, c'est dit clairement — sans censure arbitraire.</li>
+    </ul>
+  </div>
+
+  <hr class="doc-divider">
+
+  <div class="doc-section">
+    <p class="section-num">6.</p>
+    <h2>Ancrage territorial & anti-greenwashing</h2>
+    <p>LIANE ne prétend pas sauver la planète. Elle propose des gestes concrets, locaux, mesurables. Et elle refuse d'exagérer son impact ou de se servir de l'écologie comme argument marketing.</p>
+    <ul>
+      <li>Les chiffres d'impact (surfaces végétalisées, événements, espèces recensées) sont mesurés et publiés honnêtement.</li>
+      <li>LIANE ne s'associe pas à ceux qui se donnent une image verte sans agir (le greenwashing).</li>
+      <li>Les actions valorisées sont physiques et locales, pas symboliques.</li>
+      <li>L'empreinte carbone des serveurs sera compensée dès que le budget le permet.</li>
+    </ul>
+  </div>
+
+  <hr class="doc-divider">
+
+  <div class="doc-section">
+    <p class="section-num">7.</p>
+    <h2>Honnêteté sur l'usage de l'IA</h2>
+    <p>L'intelligence artificielle est un outil, pas un auteur. LIANE part d'une intention, d'un terrain et de choix qui sont les miens — et le restent. Je préfère le dire plutôt que d'entretenir le flou.</p>
+    <ul>
+      <li>L'IA n'écrit pas ce projet : la rédaction, les idées de fond et la trajectoire de LIANE ne lui sont jamais déléguées.</li>
+      <li>Je m'en sers comme d'un outil de mise en forme, pour donner corps à une idée qui existe déjà. À ce jour, elle m'a aidé sur le design de la maquette et de ce site.</li>
+      <li>Cet usage reste limité et assumé. S'il évolue, cette charte évoluera avec lui.</li>
+    </ul>
+  </div>
+
+  <div class="doc-closing">
+    <p>Cette charte est un document vivant. Elle est révisée chaque année avec la communauté LIANE. La version en vigueur est toujours accessible sur la plateforme.</p>
+    <p class="closing-meta">LIANE · Occitanie · Avril 2026 · #LianeToulouse · Version 1.0</p>
+  </div>
+
+</div>
+
+<footer>
+  <span class="f-logo">LIANE</span>
+  <ul class="f-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="manifeste.html">Manifeste</a></li>
+    <li><a href="mailto:lianeoccitanie@gmail.com">Contact</a></li>
+  </ul>
+  <span class="f-tag">#LianeToulouse · 2026</span>
+</footer>
+
+</body>
+</html>

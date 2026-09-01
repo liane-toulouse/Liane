@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIANE — Réseau végétal pour une ville vivante</title>
+<meta name="description" content="LIANE connecte les habitants d'Occitanie autour de la végétation urbaine, du partage de plantes et de l'action écologique collective.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,600&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink:   #161610;
+  --moss:  #2a5022;
+  --leaf:  #4a7e3a;
+  --sage:  #8fb87a;
+  --mist:  #d6e8cc;
+  --paper: #f2ede4;
+  --cream: #faf7f2;
+  --serif: 'Fraunces', Georgia, serif;
+  --sans:  'Instrument Sans', system-ui, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--ink); font-family: var(--sans); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 99;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 2.5rem;
+  transition: background .3s, border-color .3s;
+}
+nav.scrolled {
+  background: rgba(250,247,242,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(42,80,34,0.1);
+}
+.logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; letter-spacing: .06em; color: var(--cream); text-decoration: none; transition: color .3s; }
+nav.scrolled .logo { color: var(--moss); }
+.nav-r { display: flex; align-items: center; gap: 2rem; }
+.nav-r a { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.6); text-decoration: none; transition: color .2s; }
+nav.scrolled .nav-r a { color: rgba(22,22,16,.5); }
+.nav-r a:hover { color: var(--cream); }
+nav.scrolled .nav-r a:hover { color: var(--moss); }
+.nav-btn { background: rgba(255,255,255,.15) !important; border: 1px solid rgba(255,255,255,.3) !important; color: var(--cream) !important; padding: .5rem 1.1rem; border-radius: .2rem; font-size: .78rem !important; transition: background .2s !important; }
+nav.scrolled .nav-btn { background: var(--moss) !important; border-color: transparent !important; color: var(--cream) !important; }
+.nav-btn:hover { background: rgba(255,255,255,.25) !important; }
+nav.scrolled .nav-btn:hover { background: var(--leaf) !important; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: var(--moss);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 2.5rem 0 5rem;
+  padding-top: 80px;
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(74,126,58,0.4) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 4rem 3rem 4rem 0; position: relative; z-index: 1; }
+.hero-right { display: flex; align-items: center; justify-content: center; padding: 4rem 0; position: relative; z-index: 1; }
+.hero-tag { font-size: .7rem; letter-spacing: .22em; text-transform: uppercase; color: var(--sage); margin-bottom: 1.6rem; }
+.hero-h1 { font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 300; line-height: 1.1; color: var(--cream); margin-bottom: 1.6rem; }
+.hero-h1 em { font-style: italic; color: var(--sage); display: block; }
+.hero-desc { font-size: .98rem; color: rgba(250,247,242,.6); max-width: 38ch; line-height: 1.8; margin-bottom: 2.4rem; }
+.hero-cta { display: flex; gap: .6rem; flex-wrap: wrap; }
+.btn-cream { background: var(--cream); color: var(--moss); padding: .8rem 1.8rem; border-radius: .2rem; font-family: var(--sans); font-size: .88rem; font-weight: 500; text-decoration: none; transition: background .2s; white-space: nowrap; }
+.btn-cream:hover { background: var(--mist); }
+.btn-ghost-w { color: var(--cream); padding: .8rem 1.6rem; border-radius: .2rem; border: 1px solid rgba(255,255,255,.3); font-family: var(--sans); font-size: .88rem; text-decoration: none; transition: border-color .2s; white-space: nowrap; }
+.btn-ghost-w:hover { border-color: rgba(255,255,255,.7); }
+
+.hero-orb { width: min(400px, 90%); aspect-ratio: 1; border-radius: 50%; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); position: relative; overflow: hidden; }
+.hero-orb-map { width: 100%; height: 100%; background: rgba(42,80,34,.6); position: relative; border-radius: 50%; overflow: hidden; }
+.hb { position: absolute; background: rgba(74,126,58,.5); border-radius: 40% 60% 50% 50%; }
+.hb1 { width: 70%; height: 55%; top: 5%; left: -8%; }
+.hb2 { width: 80%; height: 50%; top: 42%; left: 22%; border-radius: 55% 45% 38% 62%; }
+.hb3 { width: 35%; height: 30%; top: 62%; left: -2%; border-radius: 60% 40% 50% 50%; }
+.hs { position: absolute; background: rgba(255,255,255,.06); }
+.hs1 { width: 2px; height: 100%; top: 0; left: 36%; }
+.hs2 { width: 2px; height: 100%; top: 0; left: 66%; }
+.hs3 { width: 100%; height: 2px; top: 32%; }
+.hs4 { width: 100%; height: 2px; top: 66%; }
+.hp { position: absolute; width: 11px; height: 11px; border-radius: 50%; border: 2px solid rgba(255,255,255,.85); }
+.hpg { background: #6dba5a; } .hpy { background: #e8c040; } .hpo { background: #d07030; }
+.hero-sheet { position: absolute; bottom: -1px; left: 0; right: 0; background: rgba(250,247,242,.95); padding: .85rem 1.1rem 1rem; }
+.hero-sheet-name { font-family: var(--serif); font-size: .88rem; font-weight: 500; color: var(--ink); }
+.hero-sheet-meta { font-size: .7rem; color: rgba(22,22,16,.42); margin-top: .1rem; }
+.hero-scroll { position: absolute; bottom: 2rem; right: 2.5rem; display: flex; flex-direction: column; align-items: center; gap: .4rem; opacity: .28; }
+.hero-scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--cream), transparent); }
+.scroll-label { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--cream); writing-mode: vertical-rl; }
+
+/* STATEMENT */
+.statement { padding: 7rem 5rem; background: var(--paper); border-top: 1px solid rgba(22,22,16,.07); }
+.statement-inner { max-width: 820px; }
+.st-text { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.5rem); font-weight: 300; line-height: 1.45; color: var(--ink); }
+.st-text strong { font-weight: 400; font-style: italic; color: var(--moss); }
+.st-attr { margin-top: 2rem; font-size: .82rem; color: rgba(22,22,16,.35); letter-spacing: .06em; display: flex; align-items: center; gap: .6rem; }
+.st-attr::before { content: ''; display: block; width: 20px; height: 1px; background: currentColor; }
+
+/* SPLIT */
+.split { display: grid; grid-template-columns: 1fr 1fr; min-height: 75vh; }
+.split-map-wrap { background: #1a3a14; position: relative; overflow: hidden; min-height: 400px; }
+.t { position: absolute; background: #224a1a; border-radius: 40% 60% 50% 50%; }
+.t1 { width: 70%; height: 55%; top: 5%; left: -10%; }
+.t2 { width: 80%; height: 50%; top: 40%; left: 20%; border-radius: 55% 45% 38% 62%; }
+.t3 { width: 40%; height: 35%; top: 60%; left: -5%; border-radius: 60% 40% 50% 50%; }
+.sg { position: absolute; background: rgba(255,255,255,.055); }
+.sg1 { width: 2px; height: 100%; top: 0; left: 35%; }
+.sg2 { width: 2px; height: 100%; top: 0; left: 68%; }
+.sg3 { width: 100%; height: 2px; top: 30%; }
+.sg4 { width: 100%; height: 2px; top: 65%; }
+.mp { position: absolute; width: 12px; height: 12px; border-radius: 50%; border: 2px solid rgba(255,255,255,.8); }
+.mg { background: #6dba5a; } .my { background: #e8c040; } .mo { background: #d07030; }
+.ml { position: absolute; background: rgba(250,247,242,.93); border-radius: .15rem; padding: .3rem .55rem; font-family: var(--sans); font-size: .62rem; color: var(--ink); font-weight: 500; white-space: nowrap; }
+.split-content { background: var(--paper); padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
+.section-label { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--leaf); margin-bottom: 1.2rem; }
+.split-title { font-family: var(--serif); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; line-height: 1.2; color: var(--ink); margin-bottom: 2rem; }
+.split-title em { font-style: italic; color: var(--moss); }
+.event-list { display: flex; flex-direction: column; gap: .5rem; }
+.event-item { display: flex; align-items: flex-start; gap: .9rem; padding: .85rem 1rem; border-radius: .2rem; background: var(--cream); border: 1px solid rgba(42,80,34,.07); transition: border-color .2s; }
+.event-item:hover { border-color: rgba(42,80,34,.25); }
+.ev-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+.dg { background: #6dba5a; } .dy { background: #e8c040; } .do { background: #d07030; }
+.ev-name { font-size: .86rem; font-weight: 500; color: var(--ink); margin-bottom: .12rem; }
+.ev-meta { font-size: .74rem; color: rgba(22,22,16,.4); }
+
+/* NUMBERS */
+.numbers { display: grid; grid-template-columns: repeat(3,1fr); background: var(--moss); }
+.num-item { padding: 4rem 3rem; border-right: 1px solid rgba(255,255,255,.08); }
+.num-item:last-child { border-right: none; }
+.num-val { font-family: var(--serif); font-size: clamp(3rem,6vw,5rem); font-weight: 700; color: var(--cream); line-height: 1; margin-bottom: .5rem; }
+.num-label { font-size: .8rem; color: var(--sage); letter-spacing: .04em; line-height: 1.55; }
+
+/* HOW */
+.how { padding: 8rem 2.5rem; max-width: 1100px; margin: 0 auto; }
+.how-grid { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid rgba(22,22,16,.09); border-radius: .3rem; overflow: hidden; margin-top: 3.5rem; }
+.how-item { padding: 2.5rem 2rem; border-right: 1px solid rgba(22,22,16,.09); transition: background .2s; }
+.how-item:last-child { border-right: none; }
+.how-item:hover { background: var(--paper); }
+.how-num { font-family: var(--serif); font-size: .78rem; font-weight: 700; color: var(--sage); margin-bottom: 1.2rem; letter-spacing: .08em; }
+.how-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--ink); margin-bottom: .65rem; line-height: 1.25; }
+.how-body { font-size: .84rem; color: rgba(22,22,16,.5); line-height: 1.75; }
+
+/* VALEURS */
+.valeurs { background: var(--paper); border-top: 1px solid rgba(22,22,16,.07); border-bottom: 1px solid rgba(22,22,16,.07); padding: 7rem 2.5rem; }
+.valeurs-inner { max-width: 1100px; margin: 0 auto; }
+.valeurs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 3rem; }
+.valeur-item { border-left: 2px solid rgba(143,184,122,.5); padding-left: 1.25rem; }
+.valeur-title { font-size: .85rem; font-weight: 500; color: var(--moss); margin-bottom: .3rem; }
+.valeur-text { font-size: .82rem; color: rgba(22,22,16,.5); line-height: 1.7; }
+.valeurs-links { margin-top: 3rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.valeurs-links a { font-size: .84rem; color: var(--leaf); text-decoration: none; border-bottom: 1px solid rgba(74,126,58,.3); padding-bottom: .1rem; transition: border-color .2s; }
+.valeurs-links a:hover { border-color: var(--leaf); }
+
+/* MANIFESTE STRIP */
+.mstrip { background: var(--cream); border-top: 1px solid rgba(22,22,16,.08); border-bottom: 1px solid rgba(22,22,16,.08); padding: 5rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 3rem; }
+.mstrip-q { font-family: var(--serif); font-size: clamp(1.2rem,2vw,1.6rem); font-weight: 300; font-style: italic; color: var(--ink); max-width: 52ch; line-height: 1.55; }
+.mstrip-q em { font-style: normal; font-weight: 700; color: var(--moss); }
+.btn-dark { background: var(--ink); color: var(--cream); padding: .85rem 1.8rem; border-radius: .2rem; font-family: var(--sans); font-size: .88rem; font-weight: 500; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: background .2s; }
+.btn-dark:hover { background: var(--moss); }
+
+/* SIGNUP */
+.signup { padding: 9rem 2.5rem; text-align: center; }
+.signup-eyebrow { font-size: .68rem; letter-spacing: .25em; text-transform: uppercase; color: var(--leaf); margin-bottom: 1.2rem; }
+.signup-h2 { font-family: var(--serif); font-size: clamp(2.2rem,5vw,4.5rem); font-weight: 300; color: var(--ink); margin-bottom: .8rem; line-height: 1.1; }
+.signup-h2 em { font-style: italic; color: var(--moss); }
+.signup-sub { font-size: .9rem; color: rgba(22,22,16,.45); margin-bottom: 3rem; max-width: 38ch; margin-left: auto; margin-right: auto; line-height: 1.7; }
+.signup-form { display: flex; max-width: 420px; margin: 0 auto 1rem; gap: .4rem; }
+.signup-form input { flex: 1; padding: .85rem 1.1rem; border: 1px solid rgba(22,22,16,.16); border-radius: .2rem; background: var(--cream); font-family: var(--sans); font-size: .9rem; color: var(--ink); outline: none; transition: border-color .2s; }
+.signup-form input:focus { border-color: var(--moss); }
+.signup-form input::placeholder { color: rgba(22,22,16,.28); }
+.signup-form button { background: var(--moss); color: var(--cream); border: none; padding: .85rem 1.4rem; border-radius: .2rem; font-family: var(--sans); font-size: .88rem; font-weight: 500; cursor: pointer; white-space: nowrap; transition: background .2s; }
+.signup-form button:hover { background: var(--leaf); }
+.signup-note { font-size: .68rem; color: rgba(22,22,16,.28); }
+
+/* FOOTER */
+footer { background: var(--ink); padding: 2.2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.2rem; }
+.f-logo { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: rgba(250,247,242,.5); letter-spacing: .06em; }
+.f-links { display: flex; gap: 1.8rem; list-style: none; }
+.f-links a { font-size: .72rem; color: rgba(250,247,242,.25); text-decoration: none; letter-spacing: .06em; transition: color .2s; }
+.f-links a:hover { color: rgba(250,247,242,.6); }
+.f-tag { font-size: .7rem; color: rgba(250,247,242,.18); }
+
+/* PROTO / CARTES */
+.proto { background: var(--cream); padding: 8rem 2.5rem; border-top: 1px solid rgba(22,22,16,.07); }
+.proto-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr .9fr; gap: 4rem; align-items: center; }
+.proto-h2 { font-family: var(--serif); font-size: clamp(2rem,3.5vw,3rem); font-weight: 300; line-height: 1.2; color: var(--ink); margin: 0 0 1.4rem; }
+.proto-h2 em { font-style: italic; color: var(--moss); }
+.proto-p { font-size: .92rem; color: rgba(22,22,16,.55); line-height: 1.8; max-width: 44ch; margin-bottom: 2rem; }
+.proto-steps { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.2rem; }
+.proto-step { display: flex; align-items: flex-start; gap: .85rem; font-size: .86rem; color: rgba(22,22,16,.6); line-height: 1.55; }
+.proto-step-n { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--moss); color: var(--cream); font-family: var(--serif); font-size: .8rem; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+.proto-pillars { list-style: none; display: flex; flex-direction: column; gap: 1.05rem; margin-bottom: 2.2rem; }
+.proto-pillars li { position: relative; padding-left: 1.15rem; font-size: .9rem; color: rgba(22,22,16,.6); line-height: 1.6; }
+.proto-pillars li::before { content: ''; position: absolute; left: 0; top: .52em; width: 6px; height: 6px; border-radius: 50%; background: var(--leaf); }
+.proto-pillars strong { color: var(--ink); font-weight: 600; }
+.proto-cta { display: inline-flex; background: var(--moss); color: var(--cream); padding: .85rem 1.8rem; border-radius: .2rem; font-family: var(--sans); font-size: .88rem; font-weight: 500; text-decoration: none; transition: background .2s; }
+.proto-cta:hover { background: var(--leaf); }
+.proto-note { font-size: .7rem; color: rgba(22,22,16,.32); margin-top: .8rem; }
+.proto-visual { position: relative; height: 420px; display: flex; align-items: center; justify-content: center; }
+.pcard { position: absolute; width: 240px; height: 340px; border-radius: .6rem; border: 1px solid rgba(42,80,34,.12); }
+.pcard-back { transform: rotate(-8deg) translate(-26px,10px); background: #ece5d8; }
+.pcard-mid { transform: rotate(4deg) translate(20px,4px); background: #f0e9dd; }
+.pcard-front { position: relative; background: var(--paper); box-shadow: 0 18px 40px rgba(22,22,16,.13); padding: 1.4rem 1.3rem; display: flex; flex-direction: column; }
+.pcard-badge { align-self: flex-start; font-size: .64rem; letter-spacing: .03em; background: var(--mist); color: var(--moss); padding: .28rem .6rem; border-radius: 1rem; font-weight: 500; margin-bottom: 1rem; }
+.pcard-leaf { flex: 1; display: flex; align-items: center; justify-content: center; }
+.pcard-leaf svg { width: 92px; height: 92px; }
+.pcard-name { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); }
+.pcard-latin { font-family: var(--serif); font-style: italic; font-size: .82rem; color: rgba(22,22,16,.4); margin-bottom: .8rem; }
+.pcard-tags { display: flex; gap: .4rem; }
+.pcard-tags span { font-size: .64rem; color: var(--leaf); border: 1px solid rgba(74,126,58,.3); border-radius: 1rem; padding: .22rem .55rem; }
+
+@keyframes up { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform:none; } }
+
+
+@media (max-width: 860px) {
+  nav { padding: .9rem 1.2rem; }
+  .nav-r a:not(.nav-btn) { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 5rem 1.5rem 3rem; }
+  .hero-right { display: none; }
+  .hero-left { padding: 2rem 0 3rem; }
+  .statement { padding: 5rem 1.2rem; }
+  .split { grid-template-columns: 1fr; }
+  .split-map-wrap { min-height: 300px; }
+  .split-content { padding: 3rem 1.5rem; }
+  .numbers { grid-template-columns: 1fr; }
+  .num-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); padding: 2.5rem 1.5rem; }
+  .proto { padding: 5rem 1.2rem; }
+  .proto-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .proto-visual { height: 360px; }
+  .how { padding: 5rem 1.2rem; }
+  .how-grid { grid-template-columns: 1fr; }
+  .how-item { border-right: none; border-bottom: 1px solid rgba(22,22,16,.09); }
+  .how-item:last-child { border-bottom: none; }
+  .valeurs { padding: 5rem 1.2rem; }
+  .valeurs-grid { grid-template-columns: 1fr; }
+  .mstrip { flex-direction: column; align-items: flex-start; padding: 3.5rem 1.5rem; }
+  .signup { padding: 6rem 1.2rem; }
+  footer { padding: 2rem 1.2rem; flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="logo">LIANE</a>
+  <div class="nav-r">
+    <a href="#proto">Le prototype</a>
+    <a href="#comment">Comment ça marche</a>
+    <a href="manifeste.html">Manifeste</a>
+    <a href="#rejoindre" class="nav-btn">Bêta-test →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-tag">Occitanie · 2026 · #LianeToulouse</p>
+    <h1 class="hero-h1">
+      La ville aussi<br>peut être<br>
+      <em>un jardin.</em>
+    </h1>
+    <p class="hero-desc">
+      LIANE relie les habitants qui veulent végétaliser, partager des plantes et faire pousser quelque chose de concret — ensemble, dans leur quartier.
+    </p>
+    <div class="hero-cta">
+      <a href="#rejoindre" class="btn-cream">Rejoindre la bêta</a>
+      <a href="#proto" class="btn-ghost-w">Voir le prototype</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-orb">
+      <div class="hero-orb-map">
+        <div class="hb hb1"></div><div class="hb hb2"></div><div class="hb hb3"></div>
+        <div class="hs hs1"></div><div class="hs hs2"></div><div class="hs hs3"></div><div class="hs hs4"></div>
+        <div class="hp hpg" style="top:27%;left:22%"></div>
+        <div class="hp hpy" style="top:42%;left:58%"></div>
+        <div class="hp hpg" style="top:54%;left:30%"></div>
+        <div class="hp hpo" style="top:33%;left:70%"></div>
+        <div class="hp hpg" style="top:20%;left:50%"></div>
+        <div class="hero-sheet">
+          <div class="hero-sheet-name">Jardin partagé — Arnaud-Bernard</div>
+          <div class="hero-sheet-meta">Toulouse · sam. 14h · 18 participants</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span class="scroll-label">Scroll</span>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement">
+  <div class="statement-inner">
+    <p class="st-text">
+      Dans chaque quartier, il y a des gens qui veulent agir —
+      des jardiniers du dimanche, des curieux de botanique, des enseignants qui cherchent un sol pour apprendre dehors.
+      <strong>Il leur manque juste un endroit pour se trouver. C'est LIANE.</strong>
+    </p>
+    <p class="st-attr">Manifeste LIANE · Occitanie, 2026</p>
+  </div>
+</section>
+
+<!-- SPLIT -->
+<section class="split">
+  <div class="split-map-wrap">
+    <div class="t t1"></div><div class="t t2"></div><div class="t t3"></div>
+    <div class="sg sg1"></div><div class="sg sg2"></div><div class="sg sg3"></div><div class="sg sg4"></div>
+    <div class="mp mg" style="top:27%;left:22%"></div>
+    <div class="mp my" style="top:42%;left:58%"></div>
+    <div class="mp mg" style="top:55%;left:30%"></div>
+    <div class="mp mo" style="top:33%;left:72%"></div>
+    <div class="mp mg" style="top:62%;left:65%"></div>
+    <div class="mp mg" style="top:20%;left:50%"></div>
+    <div class="ml" style="top:20%;left:25%;transform:translateY(-120%)">Jardin Arnaud-Bernard</div>
+    <div class="ml" style="top:35%;left:61%;transform:translateY(-120%)">Troc graines Compans</div>
+  </div>
+  <div class="split-content">
+    <p class="section-label">La carte du vivant</p>
+    <h2 class="split-title">Ce qui se passe<br><em>près de chez toi</em></h2>
+    <div class="event-list">
+      <div class="event-item">
+        <div class="ev-dot dg"></div>
+        <div><div class="ev-name">Plantation collective — Arnaud-Bernard</div><div class="ev-meta">Sam 12 avr · 14h · 18 participants</div></div>
+      </div>
+      <div class="event-item">
+        <div class="ev-dot dy"></div>
+        <div><div class="ev-name">Troc de graines — Compans-Caffarelli</div><div class="ev-meta">Dim 13 avr · 10h · 9 participants</div></div>
+      </div>
+      <div class="event-item">
+        <div class="ev-dot do"></div>
+        <div><div class="ev-name">Balade botanique — Canal du Midi</div><div class="ev-meta">Dim 13 avr · 9h · 14 participants</div></div>
+      </div>
+      <div class="event-item">
+        <div class="ev-dot dg"></div>
+        <div><div class="ev-name">Potager partagé — Les Minimes</div><div class="ev-meta">Sam 19 avr · 11h · 22 participants</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROTO / CARTES -->
+<section class="proto" id="proto">
+  <div class="proto-inner">
+    <div class="proto-copy">
+      <p class="section-label">L'appli</p>
+      <h2 class="proto-h2">Observer, collectionner,<br><em>se retrouver</em></h2>
+      <p class="proto-p">
+        LIANE réunit trois usages dans une même appli : une carte vivante de ton quartier, un herbier à collectionner, et une communauté qui passe à l'action. Le prototype les fait déjà tenir ensemble.
+      </p>
+      <ul class="proto-pillars">
+        <li><strong>La carte</strong> — repère plantes, hotspots et événements autour de toi, et ajoute les tiens.</li>
+        <li><strong>Les cartes végétales</strong> — chaque plante confirmée par le quartier devient une fiche à collectionner.</li>
+        <li><strong>La communauté</strong> — trocs, balades, chantiers : on se retrouve pour de vrai.</li>
+      </ul>
+      <a href="https://www.figma.com/proto/ooKtnPyNj4a8mEjfxUoRo0/LIANE-%E2%80%94-Wireframes-Phase-0?node-id=30-2&amp;p=f&amp;t=WBv4shfDGRSMD7l7-1&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=0%3A1&amp;starting-point-node-id=30%3A2" class="proto-cta" id="proto-link" target="_blank" rel="noopener">Essayer le prototype →</a>
+      <p class="proto-note" id="proto-note">Prototype cliquable · 12 écrans · plein écran</p>
+    </div>
+    <div class="proto-visual" aria-hidden="true">
+      <div class="pcard pcard-back"></div>
+      <div class="pcard pcard-mid"></div>
+      <div class="pcard pcard-front">
+        <div class="pcard-badge">✓ Confirmée · 5 / 5</div>
+        <div class="pcard-leaf">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 92C50 92 18 74 18 44C18 24 34 10 50 10C66 10 82 24 82 44C82 74 50 92 50 92Z" fill="#8fb87a" fill-opacity="0.25"/>
+            <path d="M50 88V16" stroke="#2a5022" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M50 34C50 34 38 30 30 34M50 46C50 46 36 42 26 48M50 58C50 58 38 56 30 62M50 34C50 34 62 30 70 34M50 46C50 46 64 42 74 48M50 58C50 58 62 56 70 62" stroke="#4a7e3a" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pcard-name">Menthe verte</div>
+        <div class="pcard-latin">Mentha spicata</div>
+        <div class="pcard-tags"><span>Comestible</span><span>Médicinale</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="numbers">
+  <div class="num-item"><div class="num-val">3</div><div class="num-label">types d'actions :<br>Ça pousse · Troc · Forêt</div></div>
+  <div class="num-item"><div class="num-val">30</div><div class="num-label">cartes végétales<br>au lancement</div></div>
+  <div class="num-item"><div class="num-val">0 €</div><div class="num-label">pour les utilisateurs,<br>toujours</div></div>
+</div>
+
+<!-- HOW -->
+<section class="how" id="comment">
+  <div class="">
+    <p class="section-label">Comment ça marche</p>
+    <h2 class="split-title" style="font-size:clamp(2rem,3.5vw,3rem);margin-bottom:0;">Simple. Concret. Dehors.</h2>
+  </div>
+  <div class="how-grid">
+    <div class="how-item">
+      <div class="how-num">01</div>
+      <div class="how-title">Tu ouvres la carte</div>
+      <p class="how-body">Tu vois ce qui se passe autour de toi — plantations, trocs, balades. Tu ajoutes une plante que tu as trouvée. En deux taps.</p>
+    </div>
+    <div class="how-item">
+      <div class="how-num">02</div>
+      <div class="how-title">Tu rejoins ou tu crées</div>
+      <p class="how-body">Un événement près de chez toi ? Tu t'inscris. Tu veux organiser quelque chose ? Tu le publies en moins d'une minute.</p>
+    </div>
+    <div class="how-item">
+      <div class="how-num">03</div>
+      <div class="how-title">Tu fermes l'appli</div>
+      <p class="how-body">Et tu vas dehors. C'est ça, LIANE. Pas une fin en soi — un outil pour que les vraies choses se passent dans la vraie vie.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALEURS -->
+<section class="valeurs">
+  <div class="valeurs-inner">
+    <div class="">
+      <p class="section-label">Éthique</p>
+      <h2 class="split-title" style="font-size:clamp(2rem,3.5vw,3rem);margin-bottom:0;">Ce que nous ne ferons pas</h2>
+    </div>
+    <div class="valeurs-grid">
+      <div class="valeur-item">
+        <p class="valeur-title">Tes données restent les tiennes</p>
+        <p class="valeur-text">Aucune donnée vendue ou cédée. La géolocalisation reste sous ton contrôle. Suppression complète sur demande, sans délai.</p>
+      </div>
+      <div class="valeur-item">
+        <p class="valeur-title">Sobriété numérique</p>
+        <p class="valeur-text">Pas de scroll infini, pas de mécaniques d'addiction. Les fonctionnalités s'ajoutent lentement, après validation réelle.</p>
+      </div>
+      <div class="valeur-item">
+        <p class="valeur-title">Pas de pub qui te suit</p>
+        <p class="valeur-text">Les pubs collent au sujet de la page — plantes, jardin, alimentation responsable.</p>
+      </div>
+      <div class="valeur-item">
+        <p class="valeur-title">Gouvernance participative</p>
+        <p class="valeur-text">Un conseil communautaire dès 100 utilisateurs actifs. Les bêta-testeurs ont un droit de regard sur les évolutions.</p>
+      </div>
+      <div class="valeur-item">
+        <p class="valeur-title">Anti-greenwashing</p>
+        <p class="valeur-text">Les indicateurs d'impact sont mesurés et publiés honnêtement. LIANE ne s'associe pas à des entités qui pratiquent le greenwashing.</p>
+      </div>
+    
+    </div>
+    <div class="valeurs-links">
+      <a href="charte.html">Lire la charte éthique complète →</a>
+      <a href="manifeste.html">Lire le manifeste fondateur →</a>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTE STRIP -->
+<div class="mstrip">
+  <p class="mstrip-q">"Il faut croire qu'une application peut être <em>profonde sans être addictive</em>. Qu'un réseau social peut pousser les gens vers la vraie vie plutôt qu'à l'écart."</p>
+  <a href="manifeste.html" class="btn-dark">Lire le manifeste →</a>
+</div>
+
+<!-- SIGNUP -->
+<section class="signup" id="rejoindre">
+  <p class="signup-eyebrow">Bêta-test · Toulouse · 2027</p>
+  <h2 class="signup-h2">Tu veux être<br><em>dans les premiers ?</em></h2>
+  <p class="signup-sub">On lance la bêta à Toulouse en 2027. Laisse ton email — on te prévient en premier, et on t'implique vraiment.</p>
+  <form class="signup-form" id="signup-form">
+    <input type="email" name="email" placeholder="email@exemple.fr" required id="mail" autocomplete="email">
+    <button type="submit" id="signup-btn">Je m'inscris</button>
+  </form>
+  <p class="signup-note">Pas de spam. Pas de revente. Désabo en 1 clic.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="f-logo">LIANE</span>
+  <ul class="f-links">
+    <li><a href="manifeste.html">Manifeste</a></li>
+    <li><a href="charte.html">Charte éthique</a></li>
+    <li><a href="/cdn-cgi/l/email-protection#fe92979f909b919d9d978a9f90979bbe99939f9792d09d9193">Contact</a></li>
+  </ul>
+  <span class="f-tag">#LianeToulouse · Occitanie · 2026</span>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+
+
+document.getElementById('signup-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('signup-btn');
+  const input = document.getElementById('mail');
+  btn.textContent = 'Envoi…';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://formspree.io/f/xlgarbla', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: input.value })
+    });
+    if (res.ok) {
+      btn.textContent = "C'est noté ✓";
+      btn.style.background = '#4a7e3a';
+      input.value = '';
+      input.disabled = true;
+      input.placeholder = 'À très bientôt !';
+    } else {
+      btn.textContent =
