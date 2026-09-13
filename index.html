@@ -246,6 +246,15 @@ footer { background: var(--ink); padding: 2.2rem 2.5rem; display: flex; align-it
   footer { padding: 2rem 1.2rem; flex-direction: column; align-items: flex-start; }
 }
 </style>
+<style>
+  .split-note { font-size:.92rem; color:rgba(22,22,16,.55); line-height:1.75; max-width:46ch; margin-bottom:2rem; }
+  .split-credit { font-size:.68rem; color:rgba(22,22,16,.32); margin-top:1.6rem; font-style:italic; }
+  .about { padding:7rem 2.5rem; background:var(--paper); border-top:1px solid rgba(22,22,16,.07); }
+  .about-inner { max-width:760px; margin:0 auto; }
+  .about-text p { font-size:.98rem; color:rgba(22,22,16,.62); line-height:1.85; margin-bottom:1.3rem; max-width:64ch; }
+  .about-text p:last-child { margin-bottom:0; }
+  @media (max-width:860px){ .about{ padding:5rem 1.2rem; } }
+</style>
 </head>
 <body>
 
@@ -268,7 +277,7 @@ footer { background: var(--ink); padding: 2.2rem 2.5rem; display: flex; align-it
       <em>un jardin.</em>
     </h1>
     <p class="hero-desc">
-      LIANE relie les habitants qui veulent végétaliser, partager des plantes et faire pousser quelque chose de concret — ensemble, dans leur quartier.
+      LIANE, c'est un projet qui cherche à relier les habitants qui veulent végétaliser, partager des plantes et faire pousser quelque chose de concret — ensemble, dans leur quartier.
     </p>
     <div class="hero-cta">
       <a href="#rejoindre" class="btn-cream">Rejoindre la bêta</a>
@@ -286,8 +295,8 @@ footer { background: var(--ink); padding: 2.2rem 2.5rem; display: flex; align-it
         <div class="hp hpo" style="top:33%;left:70%"></div>
         <div class="hp hpg" style="top:20%;left:50%"></div>
         <div class="hero-sheet">
-          <div class="hero-sheet-name">Jardin partagé — Arnaud-Bernard</div>
-          <div class="hero-sheet-meta">Toulouse · sam. 14h · 18 participants</div>
+          <div class="hero-sheet-name">Jardin des Plantes</div>
+          <div class="hero-sheet-meta">Toulouse · ouvert au public</div>
         </div>
       </div>
     </div>
@@ -321,30 +330,28 @@ footer { background: var(--ink); padding: 2.2rem 2.5rem; display: flex; align-it
     <div class="mp mo" style="top:33%;left:72%"></div>
     <div class="mp mg" style="top:62%;left:65%"></div>
     <div class="mp mg" style="top:20%;left:50%"></div>
-    <div class="ml" style="top:20%;left:25%;transform:translateY(-120%)">Jardin Arnaud-Bernard</div>
-    <div class="ml" style="top:35%;left:61%;transform:translateY(-120%)">Troc graines Compans</div>
+    <div class="ml" style="top:20%;left:25%;transform:translateY(-120%)">Jardin des Plantes</div>
+    <div class="ml" style="top:35%;left:61%;transform:translateY(-120%)">Jardin botanique Henri-Gaussen</div>
   </div>
   <div class="split-content">
     <p class="section-label">La carte du vivant</p>
-    <h2 class="split-title">Ce qui se passe<br><em>près de chez toi</em></h2>
+    <h2 class="split-title">On ne part pas<br><em>d'une carte vide</em></h2>
+    <p class="split-note">Toulouse compte déjà une trentaine de jardins partagés et une multitude d'autres évènements en tout genre autour du vivant. LIANE ne les remplace pas — elle les relie sur une même carte, et invite à en faire éclore de nouveaux.</p>
     <div class="event-list">
       <div class="event-item">
         <div class="ev-dot dg"></div>
-        <div><div class="ev-name">Plantation collective — Arnaud-Bernard</div><div class="ev-meta">Sam 12 avr · 14h · 18 participants</div></div>
+        <div><div class="ev-name">Jardin botanique Henri-Gaussen</div><div class="ev-meta">Busca · ouvert au public</div></div>
       </div>
       <div class="event-item">
         <div class="ev-dot dy"></div>
-        <div><div class="ev-name">Troc de graines — Compans-Caffarelli</div><div class="ev-meta">Dim 13 avr · 10h · 9 participants</div></div>
+        <div><div class="ev-name">Jardin des Plantes</div><div class="ev-meta">Muséum · ouvert au public</div></div>
       </div>
       <div class="event-item">
         <div class="ev-dot do"></div>
-        <div><div class="ev-name">Balade botanique — Canal du Midi</div><div class="ev-meta">Dim 13 avr · 9h · 14 participants</div></div>
-      </div>
-      <div class="event-item">
-        <div class="ev-dot dg"></div>
-        <div><div class="ev-name">Potager partagé — Les Minimes</div><div class="ev-meta">Sam 19 avr · 11h · 22 participants</div></div>
+        <div><div class="ev-name">Jardinons Toulouse</div><div class="ev-meta">programme de la ville</div></div>
       </div>
     </div>
+    <p class="split-credit">D'après les jardins partagés toulousains · Partageons les jardins.</p>
   </div>
 </section>
 
@@ -387,8 +394,8 @@ footer { background: var(--ink); padding: 2.2rem 2.5rem; display: flex; align-it
 
 <!-- NUMBERS -->
 <div class="numbers">
-  <div class="num-item"><div class="num-val">3</div><div class="num-label">types d'actions :<br>Ça pousse · Troc · Forêt</div></div>
-  <div class="num-item"><div class="num-val">30</div><div class="num-label">cartes végétales<br>au lancement</div></div>
+  <div class="num-item"><div class="num-val">3</div><div class="num-label">gestes :<br>observer · collectionner · se retrouver</div></div>
+  <div class="num-item"><div class="num-val">2027</div><div class="num-label">la première beta</div></div>
   <div class="num-item"><div class="num-val">0 €</div><div class="num-label">pour les utilisateurs,<br>toujours</div></div>
 </div>
 
@@ -422,7 +429,7 @@ footer { background: var(--ink); padding: 2.2rem 2.5rem; display: flex; align-it
   <div class="valeurs-inner">
     <div class="">
       <p class="section-label">Éthique</p>
-      <h2 class="split-title" style="font-size:clamp(2rem,3.5vw,3rem);margin-bottom:0;">Ce que nous ne ferons pas</h2>
+      <h2 class="split-title" style="font-size:clamp(2rem,3.5vw,3rem);margin-bottom:0;">Mes engagements</h2>
     </div>
     <div class="valeurs-grid">
       <div class="valeur-item">
@@ -439,11 +446,15 @@ footer { background: var(--ink); padding: 2.2rem 2.5rem; display: flex; align-it
       </div>
       <div class="valeur-item">
         <p class="valeur-title">Gouvernance participative</p>
-        <p class="valeur-text">Un conseil communautaire dès 100 utilisateurs actifs. Les bêta-testeurs ont un droit de regard sur les évolutions.</p>
+        <p class="valeur-text">Je m'engage à créer un conseil communautaire dès les 100 premiers utilisateurs actifs. Les bêta-testeurs auront un droit de regard sur les évolutions.</p>
       </div>
       <div class="valeur-item">
         <p class="valeur-title">Anti-greenwashing</p>
         <p class="valeur-text">Les indicateurs d'impact sont mesurés et publiés honnêtement. LIANE ne s'associe pas à des entités qui pratiquent le greenwashing.</p>
+      </div>
+      <div class="valeur-item">
+        <p class="valeur-title">Gratuit, et financé honnêtement</p>
+        <p class="valeur-text">LIANE est et restera gratuite. Pour la financer sans trahir ses valeurs, je vise des subventions à la transition écologique, des partenariats avec les collectivités et un premium optionnel léger.</p>
       </div>
     
     </div>
@@ -456,15 +467,28 @@ footer { background: var(--ink); padding: 2.2rem 2.5rem; display: flex; align-it
 
 <!-- MANIFESTE STRIP -->
 <div class="mstrip">
-  <p class="mstrip-q">"Il faut croire qu'une application peut être <em>profonde sans être addictive</em>. Qu'un réseau social peut pousser les gens vers la vraie vie plutôt qu'à l'écart."</p>
+  <p class="mstrip-q">"Je crois qu'une application peut être <em>profonde sans être addictive</em>. Qu'un réseau social peut pousser les gens vers la vraie vie plutôt qu'à l'écart."</p>
   <a href="manifeste.html" class="btn-dark">Lire le manifeste →</a>
 </div>
+
+<!-- QUI EST DERRIÈRE -->
+<section class="about" id="qui">
+  <div class="about-inner">
+    <p class="section-label">Derrière LIANE</p>
+    <h2 class="split-title" style="font-size:clamp(2rem,3.5vw,3rem);margin-bottom:1.5rem;">Pour l'instant,<br><em>c'est moi.</em></h2>
+    <div class="about-text">
+      <p>LIANE n'est ni une entreprise ni une équipe. C'est le projet d'une seule personne — moi. À 24 ans, diplômé en écologie humaine, avec un peu d'expérience en agriculture urbaine et dans la conduite de projets sociaux. J'aime le vivant (les plantes particulièrement), la voile, la lecture et les voyages.</p>
+      <p>En ce moment, j'essaie de m'ancrer professionnellement dans l'agriculture urbaine à Toulouse — si ça résonne, on peut en parler. Du coup, LIANE grandit lentement, quelques heures par jour, à côté du reste. Je n'ai pas de budget, aucune garantie que ça marche, et je ferai des erreurs — le moins possible ! Ce que je cherche au fond, c'est construire quelque chose qui a du sens, de vivant, avec des gens.</p>
+      <p>Si ça te parle, si tu as des idées ou des questions, n'hésite pas à m'écrire.</p>
+    </div>
+  </div>
+</section>
 
 <!-- SIGNUP -->
 <section class="signup" id="rejoindre">
   <p class="signup-eyebrow">Bêta-test · Toulouse · 2027</p>
   <h2 class="signup-h2">Tu veux être<br><em>dans les premiers ?</em></h2>
-  <p class="signup-sub">On lance la bêta à Toulouse en 2027. Laisse ton email — on te prévient en premier, et on t'implique vraiment.</p>
+  <p class="signup-sub">Je vais lancer la bêta à Toulouse en 2027. Laisse ton email — je te tiens au courant des évolutions et te laisse la porte ouverte si tu veux t'impliquer !</p>
   <form class="signup-form" id="signup-form">
     <input type="email" name="email" placeholder="email@exemple.fr" required id="mail" autocomplete="email">
     <button type="submit" id="signup-btn">Je m'inscris</button>
