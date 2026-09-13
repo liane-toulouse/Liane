@@ -532,4 +532,14 @@ document.getElementById('signup-form').addEventListener('submit', async function
       input.disabled = true;
       input.placeholder = 'À très bientôt !';
     } else {
-      btn.textContent =
+      btn.textContent = "Oups, réessaie";
+      btn.disabled = false;
+    }
+  } catch (err) {
+    btn.textContent = "Souci réseau, réessaie";
+    btn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
